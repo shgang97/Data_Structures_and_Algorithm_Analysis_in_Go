@@ -5,6 +5,12 @@ import (
 	"fmt"
 )
 
+/*
+@author: shg
+@since: 2022/8/15
+@desc: //TODO
+*/
+
 const (
 	defaultCapacity int = 10
 )
@@ -14,9 +20,15 @@ type ArrayList struct {
 	size        int
 }
 
-func New(capacity ...int) *ArrayList {
+func New(initCapacity ...int) *ArrayList {
 	list := new(ArrayList)
-	list.elementData = make([]interface{}, defaultCapacity)
+	var capacity int
+	if len(initCapacity) == 1 {
+		capacity = initCapacity[0]
+	} else {
+		capacity = defaultCapacity
+	}
+	list.elementData = make([]interface{}, capacity)
 	list.size = 0
 	return list
 }
@@ -30,7 +42,7 @@ func (list *ArrayList) IsEmpty() bool {
 }
 
 func (list *ArrayList) Contains(value interface{}) bool {
-	return false
+	return list.IndexOf(value) != -1
 }
 
 func (list *ArrayList) Get(index int) (interface{}, error) {

@@ -7,7 +7,7 @@ import (
 
 func TestArrayList(t *testing.T) {
 
-	list := New()
+	list := New(5)
 	list.Insert(0, 0)
 	list.Insert(1, 1)
 	list.Insert(2, 2)
